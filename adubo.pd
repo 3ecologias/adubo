@@ -1,0 +1,586 @@
+#N canvas 565 215 699 302 10;
+#X obj 44 -145 cnv 15 220 50 empty empty cotidiano 1 25 0 30 -1410
+-262144 0;
+#X text 22 -97 framework para gravação de cotidianos;
+#X obj 44 -95 cnv 15 220 50 empty empty sensitivo 1 25 0 30 -2050 -262144
+0;
+#X text 129 -47 framework para gravação de cotidianos;
+#X text 127 -47 framework para gravação de cotidianos;
+#X obj 134 -45 cnv 15 130 50 empty empty .info 1 25 0 30 -2370 -262144
+0;
+#N canvas 361 24 888 548 sensitivo 0;
+#X obj 221 240 tgl 30 0 booot boot empty 17 7 0 10 -4034 -1 -1 0 1
+;
+#X obj 124 179 hradio 10 1 0 4 empty empty empty 0 -8 0 8 -41923 -262144
+-262144 1;
+#N canvas 50 52 1227 427 cortex 0;
+#X obj 76 352 pix_write;
+#X obj 6 334 inlet;
+#X obj 481 252 inlet;
+#X obj 1018 352 bng 15 250 50 0 empty empty empty 0 -6 0 8 -258699
+-1 -1;
+#X obj -50 252 inlet;
+#X obj 164 269 spigot;
+#X obj 11 173 r boot;
+#X msg 11 201 1;
+#X msg 76 218 file /home/rbrz/Bancada/sw/cotidiano/adubo_v04/imgs/csensitivo
+83;
+#X text 137 351 grava imagem na pasta;
+#X text 10 349 gem;
+#N canvas 692 52 658 408 salvapainel 0;
+#X obj 114 62 inlet;
+#X obj 114 254 outlet;
+#X obj 114 199 t b a;
+#X obj 114 125 savepanel;
+#X msg 114 162 set file \$1 83;
+#X connect 0 0 3 0;
+#X connect 2 0 1 0;
+#X connect 2 1 1 0;
+#X connect 3 0 4 0;
+#X connect 4 0 2 0;
+#X restore 1018 372 pd salvapainel;
+#X obj 76 109 r dirRaiz;
+#X obj 76 170 t b a;
+#X msg 76 140 set file \$1/imgs/csensitivo 83;
+#X connect 1 0 0 0;
+#X connect 2 0 5 0;
+#X connect 3 0 11 0;
+#X connect 4 0 5 1;
+#X connect 5 0 0 0;
+#X connect 6 0 7 0;
+#X connect 7 0 8 0;
+#X connect 8 0 0 0;
+#X connect 12 0 14 0;
+#X connect 13 0 8 0;
+#X connect 13 1 8 0;
+#X connect 14 0 13 0;
+#X restore -146 241 pd cortex;
+#N canvas 292 214 723 490 iris 0;
+#X obj 65 88 gemhead;
+#X obj 65 309 rectangle 4 3;
+#X obj 65 275 pix_texture;
+#X obj 65 239 pix_video;
+#X msg 108 149 device 1;
+#N canvas 162 133 570 420 serin 0;
+#X obj 205 60 cnv 20 20 20 empty \$0-open-canvas 1 4 10 0 16 -233017
+-1 0;
+#X obj 60 61 hradio 18 1 1 8 empty empty empty 0 -6 0 8 -225271 -1
+-1 1;
+#X obj 60 13 inlet;
+#X msg 200 202 label \$1;
+#X obj 200 180 makefilename %d;
+#X obj 59 108 int;
+#X obj 59 337 outlet;
+#X msg 201 306 set \$1 \$2;
+#X obj 59 266 trigger bang anything;
+#X obj 201 286 list;
+#X obj 200 225 send \$0-open-canvas;
+#X msg 60 210 device \$1;
+#X connect 1 0 5 0;
+#X connect 2 0 1 0;
+#X connect 3 0 10 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 5 0 11 0;
+#X connect 7 0 6 0;
+#X connect 8 0 6 0;
+#X connect 8 1 9 0;
+#X connect 9 0 7 0;
+#X connect 11 0 8 0;
+#X coords 0 -1 1 1 165 20 1 60 60;
+#X restore 108 125 pd serin;
+#X obj 65 346 outlet;
+#X obj 145 46 inlet;
+#X connect 0 0 3 0;
+#X connect 1 0 6 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 4 0 3 0;
+#X connect 5 0 4 0;
+#X connect 7 0 5 0;
+#X restore -121 197 pd iris;
+#N canvas 375 186 682 322 gemwin 0;
+#X obj 102 122 tgl 15 0 \$0-gemstart \$0-gemstart empty 17 7 0 10 -262144
+-1 -1 1 1;
+#X obj 102 161 r \$0-gemstart;
+#X obj 102 182 select 1 0;
+#X msg 102 214 create \, 1;
+#X msg 177 215 destroy;
+#X obj 102 239 t a;
+#X obj 318 54 inlet;
+#X obj 318 255 gemwin;
+#X obj 318 100 t a a;
+#X obj 318 287 outlet;
+#X obj 350 128 route create destroy;
+#X obj 350 150 t b;
+#X msg 350 172 1;
+#X obj 390 150 t b;
+#X msg 390 172 0;
+#X obj 350 195 t f;
+#X msg 350 219 set \$1;
+#X text 118 122 rendering;
+#X obj 394 51 inlet;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 4 0;
+#X connect 3 0 5 0;
+#X connect 4 0 5 0;
+#X connect 5 0 8 0;
+#X connect 6 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 8 1 10 0;
+#X connect 10 0 11 0;
+#X connect 10 1 13 0;
+#X connect 11 0 12 0;
+#X connect 12 0 15 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 15 0 16 0;
+#X connect 16 0 0 0;
+#X connect 18 0 8 0;
+#X coords 0 -1 1 1 85 40 1 100 100;
+#X restore -208 340 pd gemwin;
+#X obj 122 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 118 195 3.iris;
+#X msg -208 310 create \, 1;
+#X obj 123 255 tgl 16 0 \$0-d \$0-d empty 0 -6 0 8 -262144 -123526
+-33289 1 1;
+#X msg -31 347 \; pd dsp \$1;
+#N canvas 274 183 828 482 escuta 0;
+#X obj 252 212 bonk~;
+#X obj 252 266 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 251 60 adc~;
+#X text 302 57 microfone;
+#X obj 252 300 outlet;
+#X msg 322 195 thresh 30 70;
+#X obj 663 78 fiddle~;
+#X floatatom 663 115 5 0 0 0 - - -;
+#X obj 322 159 loadbang;
+#X msg 447 224 thresh \$1 \$2;
+#X obj 447 192 pack f f;
+#X obj 447 142 inlet;
+#X obj 492 141 inlet;
+#X obj 663 182 >= 80;
+#X obj 690 151 inlet;
+#X obj 663 217 sel 1;
+#X obj 663 249 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 759 170 f;
+#X floatatom 759 201 5 0 0 0 - - -;
+#X obj 663 277 outlet;
+#X obj 759 237 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 2 0 6 0;
+#X connect 2 1 0 0;
+#X connect 5 0 0 0;
+#X connect 6 0 7 0;
+#X connect 7 0 13 0;
+#X connect 7 0 17 1;
+#X connect 8 0 5 0;
+#X connect 10 0 9 0;
+#X connect 11 0 10 0;
+#X connect 12 0 10 1;
+#X connect 13 0 15 0;
+#X connect 14 0 13 1;
+#X connect 15 0 16 0;
+#X connect 16 0 17 0;
+#X connect 16 0 19 0;
+#X connect 17 0 18 0;
+#X connect 18 0 20 0;
+#X restore 358 92 pd escuta;
+#X obj 358 199 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 383 173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 409 128 5 0 0 0 - - -;
+#X text 118 160 2.dispositivo;
+#X text 277 138 b;
+#X text 276 158 a;
+#X obj 222 184 hsl 50 10 0 20000 0 0 empty empty empty -2 -8 0 10 -257985
+-1 -1 1800 1;
+#X text 221 194 0-20kHz;
+#X text 118 236 4.dsp;
+#X text 214 120 5.threshold;
+#X obj 222 143 hsl 50 12 5 30 0 0 empty empty empty -2 -8 0 10 -191407
+-1 -1 1200 1;
+#X obj 222 163 hsl 50 12 30 90 0 0 empty empty empty -2 -8 0 10 -86853
+-1 -1 3400 1;
+#X obj -49 148 dirpanel;
+#X obj 12 165 s dirRaiz;
+#X obj 123 140 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 119 119 1.diretorio;
+#X text 220 219 6.captura;
+#X obj 358 250 s ct_ataque;
+#X obj 383 214 s ct_freq;
+#X obj 409 151 s ct_valFreq;
+#X obj -62 226 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -17 209 r cotidiano;
+#X obj 433 248 s cotidiano;
+#X text -148 171 comment;
+#X msg 351 455 vis 1;
+#X obj 351 478 s pd-\$0-adubo-info;
+#X obj 351 428 r \$0-adubo-botao;
+#N canvas 495 128 450 350 \$0-adubo-info 0;
+#X obj 16 24 cnv 15 400 300 empty empty empty 20 12 0 14 -240642 -66577
+0;
+#X text 42 34 cotidianosensitivo.info eh um software-hardware-site
+de experimentacao em internet das coisas \, net.art e eco-dispositivos
+conectados em cidades do nordeste brasileiro.;
+#X text 44 108 adubo v.04 eh o ambiente de catalogo de dados (imagens
++ informacoes) para a plataforma web desenvolvida com as tecnologias
+Java \, jQuery \, HTML5 \, gerenciada por servidores em nuvem (cloud
+computing) e acionadas por sensores produzidos em Arduino e Pure-Data.
+;
+#X text 39 300 + info: cotidianosensitivo.info/blog;
+#X text 43 192 antes de iniciar \, eh necessario executar o script
+cotidianosensitivo.sh localizado na mesma pasta do patch.;
+#X text 42 240 apoio - funarte (producao cultural pra internet 2010)
+agradecimentos - 3ecologias \, ricardo ruiz(oficinas) \, jean.habib(write-gem-ptx-bailux).
+;
+#X restore 351 403 pd \$0-adubo-info;
+#X text 345 377 carrega botao info;
+#X obj 100 100 cnv 15 200 15 empty empty configuraÃ§Ãµes 5 7 1 10 -76362
+-262144 0;
+#X obj 45 244 t b b;
+#X obj -69 321 s inicio;
+#X text -301 6 sensitivo - configuracoes do software;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 3 0 2 1;
+#X connect 5 0 41 0;
+#X connect 7 0 4 0;
+#X connect 8 0 9 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 10 2 13 0;
+#X connect 11 0 28 0;
+#X connect 11 0 33 0;
+#X connect 12 0 29 0;
+#X connect 12 0 33 0;
+#X connect 13 0 30 0;
+#X connect 17 0 10 2;
+#X connect 21 0 10 0;
+#X connect 22 0 10 1;
+#X connect 23 0 24 0;
+#X connect 25 0 23 0;
+#X connect 31 0 2 2;
+#X connect 32 0 31 0;
+#X connect 35 0 36 0;
+#X connect 37 0 35 0;
+#X connect 41 0 7 0;
+#X connect 41 1 42 0;
+#X coords 0 -1 1 1 200 200 2 100 100;
+#X restore 275 -142 pd sensitivo;
+#N canvas 492 67 734 300 ecologias 0;
+#N canvas 132 75 1067 543 teia 0;
+#X obj 373 53 inlet;
+#X obj 373 80 prepend set;
+#X obj 184 31 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 494 357 shell;
+#X obj 184 65 spigot;
+#X obj 217 37 inlet;
+#X obj 349 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 494 161 sh /home/rbrz/Bancada/sw/cotidiano/adubo_v04/teia.sh
+;
+#X text 706 451 bash script teia.sh - 3ecologias.net;
+#X text 707 470 necessita do curl instalado (sudo apt-get install curl)
+;
+#X obj 493 -8 r dirRaiz;
+#X obj 494 131 t b a;
+#X obj 494 260 prepend set;
+#X msg 494 318 sh /home/rbrz/Bancada/sw/cotidiano/adubo_v04/teia.sh
+symbol;
+#X obj 494 204 tosymbol;
+#X obj 494 234 pack s s;
+#X obj 559 196 tosymbol;
+#X msg 373 179 26 69 13 13;
+#X obj 645 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 645 239 delay 50;
+#X obj 184 5 r cotidiano;
+#X obj 184 159 delay 700;
+#X obj 298 132 t b b;
+#X msg 493 101 set sh \$1/teia.sh;
+#X connect 0 0 1 0;
+#X connect 0 0 6 0;
+#X connect 1 0 17 0;
+#X connect 2 0 4 0;
+#X connect 4 0 21 0;
+#X connect 5 0 4 1;
+#X connect 6 0 4 0;
+#X connect 7 0 14 0;
+#X connect 10 0 23 0;
+#X connect 11 0 7 0;
+#X connect 11 1 7 0;
+#X connect 12 0 13 0;
+#X connect 13 0 3 0;
+#X connect 14 0 15 0;
+#X connect 15 0 12 0;
+#X connect 16 0 15 1;
+#X connect 16 0 18 0;
+#X connect 17 0 16 0;
+#X connect 18 0 19 0;
+#X connect 19 0 13 0;
+#X connect 20 0 2 0;
+#X connect 21 0 22 0;
+#X connect 22 0 17 0;
+#X connect 22 1 11 0;
+#X connect 23 0 11 0;
+#X restore -154 133 pd teia;
+#N canvas 0 24 1366 714 ambiente 0;
+#X obj 492 536 pack f f f f;
+#X msg 492 573 \$1 \$2 \$3 \$4;
+#X obj 492 618 prepend set;
+#X msg 491 638 26 69 13 13;
+#X obj 491 682 outlet;
+#X obj 74 319 shell;
+#X floatatom 74 396 5 0 0 0 - - -;
+#X obj 74 344 pack f;
+#X obj 74 369 unpack f;
+#X obj 719 235 shell;
+#X floatatom 719 312 5 0 0 0 - - -;
+#X obj 719 260 pack f;
+#X obj 719 285 unpack f;
+#X obj 1035 250 shell;
+#X floatatom 1035 327 5 0 0 0 - - -;
+#X obj 1035 275 pack f;
+#X obj 1035 300 unpack f;
+#X obj 133 12 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 657 197 delay 300;
+#X obj 11 264 delay 300;
+#X text 107 397 C;
+#X text 754 312 MPH;
+#X text 1072 327 kt;
+#X obj 399 276 shell;
+#X obj 400 301 pack f;
+#X obj 399 326 unpack f;
+#X floatatom 400 357 5 0 0 0 - - -;
+#X obj 581 569 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 581 621 delay 500;
+#X obj 93 11 inlet;
+#X msg 74 252 weather -i SBRF -q | egrep "[0-9][0-9]" -o |head -2;
+#X msg 719 187 weather -i SBRF -q | egrep "[0-9][0-9]" -o |head -5
+;
+#X msg 400 242 weather -i SBRF -q |egrep "[0-9][0-9]" -o |head -3;
+#X obj 1172 511 inlet;
+#X text 1169 493 radar MET;
+#X text 1169 534 SBRF - RECIFE SBSV - SALVADOR;
+#X text 1023 630 captura informacoes ambientais v.01 - 3ecologias.net
+necessita do software weather - (sudo apt-get install weather-util)
+;
+#X text 438 356 %;
+#X obj 1106 320 s sns_kt;
+#X obj 400 386 s sns_umd;
+#X obj 83 428 s sns_temp;
+#X obj 765 332 s sns_mph;
+#X msg 1035 118 set weather -i \$1 -q | egrep "[0-9][0-9]" -o|head
+-4;
+#X obj 1035 153 t b a;
+#X msg 1035 189 weather -i SBRF -q | egrep "[0-9][0-9]" -o|head -4
+;
+#X obj 1172 558 s radarSet;
+#X obj 1035 86 r radarSet;
+#X msg 697 120 set weather -i \$1 -q | egrep "[0-9][0-9]" -o |head
+-5;
+#X obj 697 86 r radarSet;
+#X obj 696 153 t b a;
+#X msg 371 120 set weather -i \$1 -q |egrep "[0-9][0-9]" -o |head -3
+;
+#X obj 390 163 t b a;
+#X obj 371 88 r radarSet;
+#X obj 337 217 delay 300;
+#X msg 62 124 set weather -i \$1 -q | egrep "[0-9][0-9]" -o |head -2
+;
+#X obj 62 169 t b a;
+#X obj 62 98 r radarSet;
+#X obj 164 14 t b b b b;
+#X obj 605 584 s cotidiano;
+#X connect 0 0 1 0;
+#X connect 0 0 27 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 5 0 7 0;
+#X connect 6 0 0 0;
+#X connect 6 0 40 0;
+#X connect 7 0 8 0;
+#X connect 8 0 6 0;
+#X connect 9 0 11 0;
+#X connect 10 0 0 2;
+#X connect 10 0 41 0;
+#X connect 11 0 12 0;
+#X connect 12 0 10 0;
+#X connect 13 0 15 0;
+#X connect 14 0 0 3;
+#X connect 14 0 38 0;
+#X connect 15 0 16 0;
+#X connect 16 0 14 0;
+#X connect 17 0 57 0;
+#X connect 18 0 31 0;
+#X connect 19 0 30 0;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 0 1;
+#X connect 26 0 39 0;
+#X connect 27 0 28 0;
+#X connect 27 0 58 0;
+#X connect 28 0 3 0;
+#X connect 29 0 17 0;
+#X connect 30 0 5 0;
+#X connect 31 0 9 0;
+#X connect 32 0 23 0;
+#X connect 33 0 45 0;
+#X connect 42 0 43 0;
+#X connect 43 0 44 0;
+#X connect 43 1 44 0;
+#X connect 44 0 13 0;
+#X connect 46 0 42 0;
+#X connect 47 0 49 0;
+#X connect 48 0 47 0;
+#X connect 49 0 31 0;
+#X connect 49 1 31 0;
+#X connect 50 0 51 0;
+#X connect 51 0 32 0;
+#X connect 51 1 32 0;
+#X connect 52 0 50 0;
+#X connect 53 0 32 0;
+#X connect 54 0 55 0;
+#X connect 55 0 30 0;
+#X connect 55 1 30 0;
+#X connect 56 0 54 0;
+#X connect 57 0 19 0;
+#X connect 57 1 53 0;
+#X connect 57 2 18 0;
+#X connect 57 3 44 0;
+#X restore -115 78 pd ambiente;
+#X obj 110 133 tgl 20 0 empty empty empty 17 7 0 10 -257985 -1 -1 0
+1;
+#X obj 111 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#N canvas 46 24 450 488 radar 0;
+#X msg 99 216 SBRF;
+#X msg 140 216 SBSV;
+#X msg 189 216 SBFZ;
+#X msg 99 256 SBRJ;
+#X msg 140 256 SBBR;
+#X msg 189 256 SBCF;
+#X msg 228 257 SBPA;
+#X msg 265 258 SBCT;
+#X msg 306 259 SBSJ;
+#X msg 224 216 SBNT;
+#X msg 265 218 SBEG;
+#X obj 256 74 sel 0 1 2 3 4 5 6 7 8 9 10;
+#X obj 107 438 outlet;
+#X obj 256 37 inlet;
+#X obj 209 426 s radarAtual;
+#X obj 201 381 tosymbol;
+#X msg 209 406 label \$1;
+#X connect 0 0 15 0;
+#X connect 1 0 15 0;
+#X connect 2 0 15 0;
+#X connect 3 0 15 0;
+#X connect 4 0 15 0;
+#X connect 5 0 15 0;
+#X connect 6 0 15 0;
+#X connect 7 0 15 0;
+#X connect 8 0 15 0;
+#X connect 9 0 15 0;
+#X connect 10 0 15 0;
+#X connect 11 0 0 0;
+#X connect 11 1 1 0;
+#X connect 11 2 2 0;
+#X connect 11 3 9 0;
+#X connect 11 4 10 0;
+#X connect 11 5 3 0;
+#X connect 11 6 4 0;
+#X connect 11 7 5 0;
+#X connect 11 8 6 0;
+#X connect 11 9 7 0;
+#X connect 11 10 8 0;
+#X connect 13 0 11 0;
+#X connect 15 0 16 0;
+#X connect 15 0 12 0;
+#X connect 16 0 14 0;
+#X restore -52 39 pd radar;
+#X obj 110 166 hradio 10 1 0 11 empty empty empty 0 -8 0 10 -13330
+-228856 -262144 0;
+#X text 132 130 habilita.nuvem;
+#X text 220 162 radar;
+#X text 127 189 recebe.dados.radar;
+#X text 457 229 ecologias - v.04;
+#X text 331 245 veja a lista de radares em LEIA-ME.txt;
+#X text 348 261 necessita do software weather-utils;
+#X obj 256 135 nbx 4 10 -1e+37 1e+37 0 0 empty sns_temp temp 0 -8 0
+8 -257985 -1 -1 26 256;
+#X obj 258 163 nbx 4 10 -1e+37 1e+37 0 0 empty sns_umd umd 0 -8 0 8
+-204800 -1 -1 69 256;
+#X obj 258 189 nbx 4 10 -1e+37 1e+37 0 0 empty sns_mph mph 0 -8 0 8
+-203904 -1 -1 13 256;
+#X obj 259 216 nbx 4 10 -1e+37 1e+37 0 0 empty sns_kt kt 0 -8 0 8 -262130
+-1 -1 13 256;
+#X obj 145 208 cnv 15 1 1 empty radarAtual SBRF 20 12 0 10 -262144
+-1 0;
+#X obj 100 101 cnv 15 200 15 empty empty informaÃ§Ãµes 5 7 1 10 -76426
+-262144 0;
+#X connect 1 0 0 1;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 1;
+#X connect 5 0 4 0;
+#X coords 0 -1 1 1 200 140 2 100 100;
+#X restore 483 -143 pd ecologias;
+#N canvas 696 24 636 300 sensores 0;
+#X obj 118 148 tgl 20 0 empty empty empty 0 -10 0 10 -258113 -1 -1
+0 1;
+#X obj 145 153 hsl 90 10 0 60000 0 0 empty empty empty -2 -8 0 10 -257985
+-1 -1 0 1;
+#N canvas 46 24 450 300 relogio1 0;
+#X obj 176 90 metro 10000;
+#X obj 176 62 inlet;
+#X obj 176 119 outlet;
+#X obj 239 62 inlet;
+#X text 159 21 bang - catalogo - temporal;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 3 0 0 1;
+#X restore -202 163 pd relogio1;
+#X text 112 129 autoCatalogo 0 - 60k mseg;
+#X obj 166 194 bng 20 250 50 0 empty ct_ataque empty 17 7 0 10 -262130
+-1 -1;
+#X obj 206 194 bng 20 250 50 0 empty ct_freq empty 17 7 0 10 -203904
+-1 -1;
+#X text 157 174 ataque;
+#X text 213 174 frequencia;
+#X obj 231 197 nbx 5 14 -1e+37 1e+37 0 0 empty ct_valFreq empty 0 -8
+0 10 -204786 -1 -1 0 256;
+#X obj 116 194 bng 20 250 50 0 empty empty empty 17 7 0 10 -191407
+-1 -1;
+#X text 109 176 metro;
+#X obj -202 197 s cotidiano;
+#X obj 100 101 cnv 15 200 15 empty empty sensores 5 7 1 10 -76362 -262144
+0;
+#X connect 0 0 2 0;
+#X connect 1 0 2 1;
+#X connect 2 0 9 0;
+#X connect 2 0 11 0;
+#X coords 0 -1 1 1 200 130 2 100 100;
+#X restore 484 12 pd sensores;
+#X obj 244 35 bng 20 250 50 0 \$0-adubo-botao empty empty 17 7 0 10
+-3017 -83269 -262144;
+#X text 231 34 +;
+#X text 129 3 framework para gravação de cotidianos;
+#X text 127 3 framework para gravação de cotidianos;
+#X obj 134 5 cnv 15 130 25 empty empty adubo_v04 1 14 0 17 -834 -262144
+0;
