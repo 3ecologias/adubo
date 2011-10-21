@@ -206,14 +206,14 @@
 #X text 277 146 b;
 #X text 276 166 a;
 #X obj 222 192 hsl 50 10 0 20000 0 0 empty empty empty -2 -8 0 10 -257985
--1 -1 200 1;
+-1 -1 600 1;
 #X text 221 202 0-20kHz;
 #X text 118 244 4.dsp;
 #X text 214 128 5.threshold;
 #X obj 222 151 hsl 50 12 5 30 0 0 empty empty empty -2 -8 0 10 -191407
--1 -1 1000 1;
+-1 -1 1200 1;
 #X obj 222 171 hsl 50 12 30 90 0 0 empty empty empty -2 -8 0 10 -86853
--1 -1 2800 1;
+-1 -1 3300 1;
 #X obj -49 148 dirpanel;
 #X obj 12 165 s dirRaiz;
 #X obj 123 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -276,7 +276,6 @@ SBSV - salvador \, SBFZ - fortaleza...);
 #X text 37 199 9 recebe os dados dos radares.;
 #X text 37 219 10 verifique se as imagens estao chegando no site http://cotidianosensitivo.info
 (plataforma);
-#X text 33 -19;
 #X restore 251 80 pd \$0-adubo-help;
 #X obj 256 105 r \$0-adubo-bth;
 #X msg 256 135 vis 1;
@@ -341,19 +340,19 @@ SBSV - salvador \, SBFZ - fortaleza...);
 #X obj 645 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 645 239 delay 50;
-#X obj 184 5 r cotidiano;
 #X obj 184 159 delay 700;
 #X obj 298 132 t b b;
 #X msg 493 101 set sh \$1/teia.sh;
+#X obj 184 5 r catalogo;
 #X connect 0 0 1 0;
 #X connect 0 0 6 0;
 #X connect 1 0 17 0;
 #X connect 2 0 4 0;
-#X connect 4 0 21 0;
+#X connect 4 0 20 0;
 #X connect 5 0 4 1;
 #X connect 6 0 4 0;
 #X connect 7 0 14 0;
-#X connect 10 0 23 0;
+#X connect 10 0 22 0;
 #X connect 11 0 7 0;
 #X connect 11 1 7 0;
 #X connect 12 0 13 0;
@@ -365,11 +364,11 @@ SBSV - salvador \, SBFZ - fortaleza...);
 #X connect 17 0 16 0;
 #X connect 18 0 19 0;
 #X connect 19 0 13 0;
-#X connect 20 0 2 0;
-#X connect 21 0 22 0;
-#X connect 22 0 17 0;
-#X connect 22 1 11 0;
-#X connect 23 0 11 0;
+#X connect 20 0 21 0;
+#X connect 21 0 17 0;
+#X connect 21 1 11 0;
+#X connect 22 0 11 0;
+#X connect 23 0 2 0;
 #X restore -154 133 pd teia;
 #N canvas 437 24 1356 691 ambiente 0;
 #X obj 492 536 pack f f f f;
@@ -603,7 +602,7 @@ necessita do software weather - (sudo apt-get install weather-util)
 -1 -1;
 #X text 157 174 ataque;
 #X obj 231 197 nbx 6 14 -1e+37 1e+37 0 0 empty ct_valFreq empty 0 -8
-0 9 -204786 -1 -1 116.491 256;
+0 9 -204786 -1 -1 0 256;
 #X obj 116 194 bng 20 250 50 0 empty empty empty 17 7 0 10 -191407
 -1 -1;
 #X text 109 176 metro;
