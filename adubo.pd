@@ -1,4 +1,4 @@
-#N canvas 565 215 699 302 10;
+#N canvas 501 46 699 320 10;
 #X obj 44 -145 cnv 15 220 50 empty empty cotidiano 1 25 0 30 -1410
 -262144 0;
 #X text 22 -97 framework para gravação de cotidianos;
@@ -8,10 +8,10 @@
 #X text 127 -47 framework para gravação de cotidianos;
 #X obj 134 -45 cnv 15 130 50 empty empty .info 1 25 0 30 -2370 -262144
 0;
-#N canvas 361 24 888 548 sensitivo 0;
-#X obj 221 240 tgl 30 0 booot boot empty 17 7 0 10 -4034 -1 -1 0 1
+#N canvas 77 182 888 548 sensitivo 0;
+#X obj 221 248 tgl 30 0 booot boot empty 17 7 0 10 -4034 -1 -1 1 1
 ;
-#X obj 124 179 hradio 10 1 0 4 empty empty empty 0 -8 0 8 -41923 -262144
+#X obj 124 187 hradio 10 1 0 4 empty empty empty 0 -8 0 8 -41923 -262144
 -262144 1;
 #N canvas 50 52 1227 427 cortex 0;
 #X obj 76 352 pix_write;
@@ -23,7 +23,7 @@
 #X obj 164 269 spigot;
 #X obj 11 173 r boot;
 #X msg 11 201 1;
-#X msg 76 218 file /home/rbrz/Bancada/sw/cotidiano/adubo_v04/imgs/csensitivo
+#X msg 76 218 file /home/rbrz/Bancada/sw/cotidiano/adubo/imgs/csensitivo
 83;
 #X text 137 351 grava imagem na pasta;
 #X text 10 349 gem;
@@ -141,11 +141,11 @@
 #X connect 18 0 8 0;
 #X coords 0 -1 1 1 85 40 1 100 100;
 #X restore -208 340 pd gemwin;
-#X obj 122 215 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 122 223 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 118 195 3.iris;
+#X text 118 203 3.iris;
 #X msg -208 310 create \, 1;
-#X obj 123 255 tgl 16 0 \$0-d \$0-d empty 0 -6 0 8 -262144 -123526
+#X obj 123 263 tgl 16 0 \$0-d \$0-d empty 0 -6 0 8 -262144 -123526
 -33289 1 1;
 #X msg -31 347 \; pd dsp \$1;
 #N canvas 274 183 828 482 escuta 0;
@@ -163,15 +163,17 @@
 #X obj 447 192 pack f f;
 #X obj 447 142 inlet;
 #X obj 492 141 inlet;
-#X obj 663 182 >= 80;
-#X obj 690 151 inlet;
-#X obj 663 217 sel 1;
-#X obj 663 249 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 690 211 inlet;
+#X obj 663 277 sel 1;
+#X obj 663 309 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 759 170 f;
-#X floatatom 759 201 5 0 0 0 - - -;
-#X obj 663 277 outlet;
-#X obj 759 237 outlet;
+#X obj 759 230 f;
+#X floatatom 759 261 5 0 0 0 - - -;
+#X obj 663 337 outlet;
+#X obj 759 297 outlet;
+#X obj 663 143 mtof;
+#X floatatom 663 172 6 0 0 0 - - -;
+#X obj 662 241 > 1000;
 #X connect 0 0 1 0;
 #X connect 1 0 4 0;
 #X connect 2 0 0 0;
@@ -179,91 +181,127 @@
 #X connect 2 1 0 0;
 #X connect 5 0 0 0;
 #X connect 6 0 7 0;
-#X connect 7 0 13 0;
-#X connect 7 0 17 1;
+#X connect 7 0 20 0;
 #X connect 8 0 5 0;
 #X connect 10 0 9 0;
 #X connect 11 0 10 0;
 #X connect 12 0 10 1;
-#X connect 13 0 15 0;
-#X connect 14 0 13 1;
+#X connect 13 0 22 1;
+#X connect 14 0 15 0;
 #X connect 15 0 16 0;
+#X connect 15 0 18 0;
 #X connect 16 0 17 0;
-#X connect 16 0 19 0;
-#X connect 17 0 18 0;
-#X connect 18 0 20 0;
+#X connect 17 0 19 0;
+#X connect 20 0 21 0;
+#X connect 21 0 22 0;
+#X connect 21 0 16 1;
+#X connect 22 0 14 0;
 #X restore 358 92 pd escuta;
 #X obj 358 199 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 383 173 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X floatatom 409 128 5 0 0 0 - - -;
-#X text 118 160 2.dispositivo;
-#X text 277 138 b;
-#X text 276 158 a;
-#X obj 222 184 hsl 50 10 0 20000 0 0 empty empty empty -2 -8 0 10 -257985
--1 -1 1800 1;
-#X text 221 194 0-20kHz;
-#X text 118 236 4.dsp;
-#X text 214 120 5.threshold;
-#X obj 222 143 hsl 50 12 5 30 0 0 empty empty empty -2 -8 0 10 -191407
--1 -1 1200 1;
-#X obj 222 163 hsl 50 12 30 90 0 0 empty empty empty -2 -8 0 10 -86853
--1 -1 3400 1;
+#X text 118 168 2.dispositivo;
+#X text 277 146 b;
+#X text 276 166 a;
+#X obj 222 192 hsl 50 10 0 20000 0 0 empty empty empty -2 -8 0 10 -257985
+-1 -1 200 1;
+#X text 221 202 0-20kHz;
+#X text 118 244 4.dsp;
+#X text 214 128 5.threshold;
+#X obj 222 151 hsl 50 12 5 30 0 0 empty empty empty -2 -8 0 10 -191407
+-1 -1 1000 1;
+#X obj 222 171 hsl 50 12 30 90 0 0 empty empty empty -2 -8 0 10 -86853
+-1 -1 2800 1;
 #X obj -49 148 dirpanel;
 #X obj 12 165 s dirRaiz;
-#X obj 123 140 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 123 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X text 119 119 1.diretorio;
-#X text 220 219 6.captura;
+#X text 119 127 1.diretorio;
+#X text 220 227 6.captura;
 #X obj 358 250 s ct_ataque;
 #X obj 383 214 s ct_freq;
 #X obj 409 151 s ct_valFreq;
 #X obj -62 226 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj -17 209 r cotidiano;
 #X obj 433 248 s cotidiano;
 #X text -148 171 comment;
-#X msg 351 455 vis 1;
-#X obj 351 478 s pd-\$0-adubo-info;
-#X obj 351 428 r \$0-adubo-botao;
-#N canvas 495 128 450 350 \$0-adubo-info 0;
-#X obj 16 24 cnv 15 400 300 empty empty empty 20 12 0 14 -240642 -66577
-0;
-#X text 42 34 cotidianosensitivo.info eh um software-hardware-site
-de experimentacao em internet das coisas \, net.art e eco-dispositivos
-conectados em cidades do nordeste brasileiro.;
-#X text 44 108 adubo v.04 eh o ambiente de catalogo de dados (imagens
-+ informacoes) para a plataforma web desenvolvida com as tecnologias
-Java \, jQuery \, HTML5 \, gerenciada por servidores em nuvem (cloud
-computing) e acionadas por sensores produzidos em Arduino e Pure-Data.
-;
-#X text 39 300 + info: cotidianosensitivo.info/blog;
-#X text 43 192 antes de iniciar \, eh necessario executar o script
-cotidianosensitivo.sh localizado na mesma pasta do patch.;
-#X text 42 240 apoio - funarte (producao cultural pra internet 2010)
-agradecimentos - 3ecologias \, ricardo ruiz(oficinas) \, jean.habib(write-gem-ptx-bailux).
-;
-#X restore 351 403 pd \$0-adubo-info;
-#X text 345 377 carrega botao info;
 #X obj 100 100 cnv 15 200 15 empty empty configuraÃ§Ãµes 5 7 1 10 -76362
 -262144 0;
 #X obj 45 244 t b b;
 #X obj -69 321 s inicio;
 #X text -301 6 sensitivo - configuracoes do software;
+#N canvas 46 24 450 300 botao 0;
+#X msg 124 131 vis 1;
+#X obj 124 154 s pd-\$0-adubo-info;
+#X obj 124 104 r \$0-adubo-botao;
+#N canvas 495 128 450 350 \$0-adubo-info 0;
+#X obj 16 24 cnv 15 400 300 empty empty sobre 2 10 0 10 -3842 -66577
+0;
+#X text 45 113 adubo v.04 eh o ambiente de catalogo de dados (imagens
++ informacoes) para a plataforma web desenvolvida com as tecnologias
+Java \, jQuery \, HTML5 \, gerenciada por servidores em nuvem (cloud
+computing) e acionadas por sensores produzidos em Arduino e Pure-Data.
+;
+#X text 40 305 + info: cotidianosensitivo.info/blog;
+#X text 44 197 antes de iniciar \, eh necessario executar o script
+cotidianosensitivo.sh localizado na mesma pasta do patch.;
+#X text 43 245 apoio - funarte (producao cultural pra internet 2010)
+agradecimentos - 3ecologias \, ricardo ruiz(oficinas) \, jean.habib(write-gem-ptx-bailux).
+;
+#X text 43 39 cotidianosensitivo.info: software-hardware-site de experimentacao
+em internet das coisas \, net.art e eco-dispositivos conectados em
+cidades do nordeste brasileiro.;
+#X restore 124 79 pd \$0-adubo-info;
+#X text 164 185 hacking navalha-glerm;
+#N canvas 46 24 450 328 \$0-adubo-help 0;
+#X obj 25 -25 cnv 15 400 300 empty empty tutorial 2 10 0 10 -241154
+-66577 0;
+#X text 37 -1 1 escolha o diretorio onde estao os arquivos do sistema
+;
+#X text 37 39 3 habilite a iris \, neste passo a maquina Gem carrega
+as imagens da camera.;
+#X text 37 19 2 defina o dispositivo da camera (dev/video0 \, video1...)
+;
+#X text 37 69 4 habilite o DSP (audio);
+#X text 37 89 5 defina o threshold de audio (b-baixo / a-alto / 0-20khz)
+;
+#X text 37 109 6 habilite o catalogo das imagens (cada variacao captura
+a imagem atual e envia para a nuvem);
+#X text 37 139 7 habilite a nuvem para envio de dados para os servidores
+Cloud Computing;
+#X text 37 169 8 escolha um dos radares disponivel (SBRF - recife \,
+SBSV - salvador \, SBFZ - fortaleza...);
+#X text 37 199 9 recebe os dados dos radares.;
+#X text 37 219 10 verifique se as imagens estao chegando no site http://cotidianosensitivo.info
+(plataforma);
+#X text 33 -19;
+#X restore 251 80 pd \$0-adubo-help;
+#X obj 256 105 r \$0-adubo-bth;
+#X msg 256 135 vis 1;
+#X text 147 55 carrega botao info e help;
+#X obj 256 159 s pd-\$0-adubo-help;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X restore 380 454 pd botao;
+#X obj -47 209 r catalogo;
+#X text 433 264 solicita dados de radar;
 #X connect 0 0 2 0;
 #X connect 1 0 3 0;
 #X connect 3 0 2 1;
-#X connect 5 0 41 0;
+#X connect 5 0 35 0;
 #X connect 7 0 4 0;
 #X connect 8 0 9 0;
 #X connect 10 0 11 0;
 #X connect 10 1 12 0;
 #X connect 10 2 13 0;
 #X connect 11 0 28 0;
-#X connect 11 0 33 0;
+#X connect 11 0 32 0;
 #X connect 12 0 29 0;
-#X connect 12 0 33 0;
+#X connect 12 0 32 0;
 #X connect 13 0 30 0;
 #X connect 17 0 10 2;
 #X connect 21 0 10 0;
@@ -271,13 +309,11 @@ agradecimentos - 3ecologias \, ricardo ruiz(oficinas) \, jean.habib(write-gem-pt
 #X connect 23 0 24 0;
 #X connect 25 0 23 0;
 #X connect 31 0 2 2;
-#X connect 32 0 31 0;
-#X connect 35 0 36 0;
-#X connect 37 0 35 0;
-#X connect 41 0 7 0;
-#X connect 41 1 42 0;
+#X connect 35 0 7 0;
+#X connect 35 1 36 0;
+#X connect 39 0 31 0;
 #X coords 0 -1 1 1 200 200 2 100 100;
-#X restore 275 -142 pd sensitivo;
+#X restore 275 -143 pd sensitivo;
 #N canvas 492 67 734 300 ecologias 0;
 #N canvas 132 75 1067 543 teia 0;
 #X obj 373 53 inlet;
@@ -289,20 +325,19 @@ agradecimentos - 3ecologias \, ricardo ruiz(oficinas) \, jean.habib(write-gem-pt
 #X obj 217 37 inlet;
 #X obj 349 70 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
-#X msg 494 161 sh /home/rbrz/Bancada/sw/cotidiano/adubo_v04/teia.sh
-;
+#X msg 494 161 sh /home/rbrz/Bancada/sw/cotidiano/adubo/teia.sh;
 #X text 706 451 bash script teia.sh - 3ecologias.net;
 #X text 707 470 necessita do curl instalado (sudo apt-get install curl)
 ;
 #X obj 493 -8 r dirRaiz;
 #X obj 494 131 t b a;
 #X obj 494 260 prepend set;
-#X msg 494 318 sh /home/rbrz/Bancada/sw/cotidiano/adubo_v04/teia.sh
-symbol;
+#X msg 494 318 sh /home/rbrz/Bancada/sw/cotidiano/adubo/teia.sh 28 61 12 12
+;
 #X obj 494 204 tosymbol;
 #X obj 494 234 pack s s;
 #X obj 559 196 tosymbol;
-#X msg 373 179 26 69 13 13;
+#X msg 373 179 28 61 12 12;
 #X obj 645 212 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 645 239 delay 50;
@@ -336,11 +371,11 @@ symbol;
 #X connect 22 1 11 0;
 #X connect 23 0 11 0;
 #X restore -154 133 pd teia;
-#N canvas 0 24 1366 714 ambiente 0;
+#N canvas 437 24 1356 691 ambiente 0;
 #X obj 492 536 pack f f f f;
 #X msg 492 573 \$1 \$2 \$3 \$4;
 #X obj 492 618 prepend set;
-#X msg 491 638 26 69 13 13;
+#X msg 491 638 28 61 12 12;
 #X obj 491 682 outlet;
 #X obj 74 319 shell;
 #X floatatom 74 396 5 0 0 0 - - -;
@@ -367,7 +402,6 @@ symbol;
 #X floatatom 400 357 5 0 0 0 - - -;
 #X obj 581 569 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 581 621 delay 500;
 #X obj 93 11 inlet;
 #X msg 74 252 weather -i SBRF -q | egrep "[0-9][0-9]" -o |head -2;
 #X msg 719 187 weather -i SBRF -q | egrep "[0-9][0-9]" -o |head -5
@@ -405,7 +439,10 @@ necessita do software weather - (sudo apt-get install weather-util)
 #X obj 62 169 t b a;
 #X obj 62 98 r radarSet;
 #X obj 164 14 t b b b b;
-#X obj 605 584 s cotidiano;
+#X obj 24 11 loadbang;
+#X obj 608 616 s catalogo;
+#X text 680 580 comment;
+#X obj 581 590 t b b;
 #X connect 0 0 1 0;
 #X connect 0 0 27 0;
 #X connect 1 0 2 0;
@@ -413,59 +450,60 @@ necessita do software weather - (sudo apt-get install weather-util)
 #X connect 3 0 4 0;
 #X connect 5 0 7 0;
 #X connect 6 0 0 0;
-#X connect 6 0 40 0;
+#X connect 6 0 39 0;
 #X connect 7 0 8 0;
 #X connect 8 0 6 0;
 #X connect 9 0 11 0;
 #X connect 10 0 0 2;
-#X connect 10 0 41 0;
+#X connect 10 0 40 0;
 #X connect 11 0 12 0;
 #X connect 12 0 10 0;
 #X connect 13 0 15 0;
 #X connect 14 0 0 3;
-#X connect 14 0 38 0;
+#X connect 14 0 37 0;
 #X connect 15 0 16 0;
 #X connect 16 0 14 0;
-#X connect 17 0 57 0;
-#X connect 18 0 31 0;
-#X connect 19 0 30 0;
+#X connect 17 0 56 0;
+#X connect 18 0 30 0;
+#X connect 19 0 29 0;
 #X connect 23 0 24 0;
 #X connect 24 0 25 0;
 #X connect 25 0 26 0;
 #X connect 26 0 0 1;
-#X connect 26 0 39 0;
-#X connect 27 0 28 0;
-#X connect 27 0 58 0;
-#X connect 28 0 3 0;
-#X connect 29 0 17 0;
-#X connect 30 0 5 0;
-#X connect 31 0 9 0;
-#X connect 32 0 23 0;
-#X connect 33 0 45 0;
+#X connect 26 0 38 0;
+#X connect 27 0 60 0;
+#X connect 28 0 17 0;
+#X connect 29 0 5 0;
+#X connect 30 0 9 0;
+#X connect 31 0 23 0;
+#X connect 32 0 44 0;
+#X connect 41 0 42 0;
 #X connect 42 0 43 0;
-#X connect 43 0 44 0;
-#X connect 43 1 44 0;
-#X connect 44 0 13 0;
-#X connect 46 0 42 0;
-#X connect 47 0 49 0;
-#X connect 48 0 47 0;
-#X connect 49 0 31 0;
-#X connect 49 1 31 0;
-#X connect 50 0 51 0;
-#X connect 51 0 32 0;
-#X connect 51 1 32 0;
-#X connect 52 0 50 0;
-#X connect 53 0 32 0;
-#X connect 54 0 55 0;
-#X connect 55 0 30 0;
-#X connect 55 1 30 0;
-#X connect 56 0 54 0;
-#X connect 57 0 19 0;
-#X connect 57 1 53 0;
-#X connect 57 2 18 0;
-#X connect 57 3 44 0;
+#X connect 42 1 43 0;
+#X connect 43 0 13 0;
+#X connect 45 0 41 0;
+#X connect 46 0 48 0;
+#X connect 47 0 46 0;
+#X connect 48 0 30 0;
+#X connect 48 1 30 0;
+#X connect 49 0 50 0;
+#X connect 50 0 31 0;
+#X connect 50 1 31 0;
+#X connect 51 0 49 0;
+#X connect 52 0 31 0;
+#X connect 53 0 54 0;
+#X connect 54 0 29 0;
+#X connect 54 1 29 0;
+#X connect 55 0 53 0;
+#X connect 56 0 19 0;
+#X connect 56 1 52 0;
+#X connect 56 2 18 0;
+#X connect 56 3 43 0;
+#X connect 57 0 17 0;
+#X connect 60 0 3 0;
+#X connect 60 1 58 0;
 #X restore -115 78 pd ambiente;
-#X obj 110 133 tgl 20 0 empty empty empty 17 7 0 10 -257985 -1 -1 0
+#X obj 110 133 tgl 20 0 empty empty empty 17 7 0 10 -257985 -1 -1 1
 1;
 #X obj 111 192 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -523,22 +561,24 @@ necessita do software weather - (sudo apt-get install weather-util)
 #X text 331 245 veja a lista de radares em LEIA-ME.txt;
 #X text 348 261 necessita do software weather-utils;
 #X obj 256 135 nbx 4 10 -1e+37 1e+37 0 0 empty sns_temp temp 0 -8 0
-8 -257985 -1 -1 26 256;
+8 -257985 -1 -1 28 256;
 #X obj 258 163 nbx 4 10 -1e+37 1e+37 0 0 empty sns_umd umd 0 -8 0 8
--204800 -1 -1 69 256;
+-204800 -1 -1 61 256;
 #X obj 258 189 nbx 4 10 -1e+37 1e+37 0 0 empty sns_mph mph 0 -8 0 8
--203904 -1 -1 13 256;
+-203904 -1 -1 12 256;
 #X obj 259 216 nbx 4 10 -1e+37 1e+37 0 0 empty sns_kt kt 0 -8 0 8 -262130
--1 -1 13 256;
+-1 -1 12 256;
 #X obj 145 208 cnv 15 1 1 empty radarAtual SBRF 20 12 0 10 -262144
 -1 0;
 #X obj 100 101 cnv 15 200 15 empty empty informaÃ§Ãµes 5 7 1 10 -76426
 -262144 0;
+#X obj -115 13 r cotidiano;
 #X connect 1 0 0 1;
 #X connect 2 0 0 0;
 #X connect 3 0 1 0;
 #X connect 4 0 1 1;
 #X connect 5 0 4 0;
+#X connect 18 0 1 0;
 #X coords 0 -1 1 1 200 140 2 100 100;
 #X restore 483 -143 pd ecologias;
 #N canvas 696 24 636 300 sensores 0;
@@ -562,25 +602,53 @@ necessita do software weather - (sudo apt-get install weather-util)
 #X obj 206 194 bng 20 250 50 0 empty ct_freq empty 17 7 0 10 -203904
 -1 -1;
 #X text 157 174 ataque;
-#X text 213 174 frequencia;
-#X obj 231 197 nbx 5 14 -1e+37 1e+37 0 0 empty ct_valFreq empty 0 -8
-0 10 -204786 -1 -1 0 256;
+#X obj 231 197 nbx 6 14 -1e+37 1e+37 0 0 empty ct_valFreq empty 0 -8
+0 9 -204786 -1 -1 116.491 256;
 #X obj 116 194 bng 20 250 50 0 empty empty empty 17 7 0 10 -191407
 -1 -1;
 #X text 109 176 metro;
 #X obj -202 197 s cotidiano;
 #X obj 100 101 cnv 15 200 15 empty empty sensores 5 7 1 10 -76362 -262144
 0;
+#X text 205 174 frequencia(Hz);
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;
-#X connect 2 0 9 0;
-#X connect 2 0 11 0;
+#X connect 2 0 8 0;
+#X connect 2 0 10 0;
 #X coords 0 -1 1 1 200 130 2 100 100;
-#X restore 484 12 pd sensores;
-#X obj 244 35 bng 20 250 50 0 \$0-adubo-botao empty empty 17 7 0 10
--3017 -83269 -262144;
-#X text 231 34 +;
+#X restore 484 3 pd sensores;
 #X text 129 3 framework para gravação de cotidianos;
 #X text 127 3 framework para gravação de cotidianos;
 #X obj 134 5 cnv 15 130 25 empty empty adubo_v04 1 14 0 17 -834 -262144
 0;
+#N canvas 46 24 450 300 sistema 0;
+#X obj 108 176 bng 20 250 50 0 \$0-adubo-botao empty empty 17 7 0 10
+-3017 -83269 -262144;
+#X obj 107 150 bng 20 250 50 0 \$0-adubo-bth empty empty 17 7 0 10
+-212930 -83269 -262144;
+#X text 133 151 tutorial;
+#N canvas 46 24 450 300 deletaImg 0;
+#X msg 83 101 rm /home/rbrz/Bancada/sw/cotidiano/adubo/imgs/*;
+#X obj 83 2 r dirRaiz;
+#X obj 83 71 t b a;
+#X obj 83 140 shell;
+#X obj 245 63 inlet;
+#X msg 83 41 set rm \$1/imgs/*;
+#X connect 0 0 3 0;
+#X connect 1 0 5 0;
+#X connect 2 0 0 0;
+#X connect 2 1 0 0;
+#X connect 4 0 0 0;
+#X connect 5 0 2 0;
+#X restore 304 204 pd deletaImg;
+#X obj 108 124 bng 20 250 50 0 empty empty empty 17 7 0 10 -258113
+-83269 -262144;
+#X text 131 124 deletar imagens;
+#X text 133 178 sobre;
+#X obj 101 101 cnv 15 130 15 empty empty sistema 5 7 1 10 -76362 -262144
+0;
+#X connect 4 0 3 0;
+#X coords 0 -1 1 1 130 100 2 100 100;
+#X restore 344 61 pd sistema;
+#X text 228 43 GPLv3;
+#X text 178 30 3Ecologias.net;
