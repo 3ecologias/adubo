@@ -40,11 +40,11 @@ touch teia.sh
 echo "#script teia.sh de envio das ultimas imagens + dados para servidores do cotidianosensitivo.info" >> teia.sh
 echo "extrato="'`ls -t1 '$PWD'/imgs/ |head -1`'"" >> teia.sh
 echo "caminho=""$PWD/imgs/"""'$extrato'"" >> teia.sh
-echo "temp="'$1'"" >> teia.sh
-echo "hum="'$2'"" >> teia.sh
-echo "mph="'$3'"" >> teia.sh
-echo "kt="'$4'"" >> teia.sh
-echo "curl -X POST -F "file=@""'$caminho'""" -F "image.temperature=""'$temp'""" -F "image.relativeHumidity=""'$hum'""" -F "image.windMilesPerHour=""'$mph'""" -F "image.windKnots=""'$kt'""" -F "image.comunity.token=C678179ad-93ee-4941-8a7c-8e88cdd5c27eS" http://50.22.248.49/cotidianosensitivo/images/save" >> teia.sh
+echo "s0="'$1'"" >> teia.sh
+echo "s1="'$2'"" >> teia.sh
+echo "s2="'$3'"" >> teia.sh
+echo "s3="'$4'"" >> teia.sh
+echo "curl -X POST -F "file=@""'$caminho'""" -F "image.sensors[0].value=""'$s0'""" -F "image.sensors[0].unit=""'ºC'""" -F "image.sensors[1].value=""'$s1'""" -F "image.sensors[1].unit=""'%'""" -F "image.sensors[2].value=""'$s2'""" -F "image.sensors[2].unit=""'mph'""" -F "image.sensors[3].value=""'$s3'""" -F "image.sensors[3].unit=""'kt'""" -F "image.comunity.token=C678179ad-93ee-4941-8a7c-8e88cdd5c27eS" http://re.gistre.me/cotidianosensitivo/images/save" >> teia.sh
 sleep 7
 echo "arquivo configurado...."
 echo "-----------------------------------------------"
